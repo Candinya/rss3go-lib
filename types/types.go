@@ -88,8 +88,7 @@ type RSS3Item struct {
 	Upstream RSS3ItemID `json:"upstream,omitempty"`
 
 	Contents []struct {
-		// Address           ThirdPartyAddress   `json:"address"`
-		File              ThirdPartyAddress `json:"file"`
+		Address           ThirdPartyAddress `json:"address"`
 		MimeType          string            `json:"mime_type"`
 		Name              string            `json:"name,omitempty"`
 		Tags              []string          `json:"tags,omitempty"`

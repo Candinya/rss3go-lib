@@ -43,10 +43,10 @@ func TestJson2RSS3(t *testing.T) {
         "date_modified": "2021-05-08T16:56:35.529Z",
 
         "contents": [{
-            "file": ["dweb://never.html", "https://example.com/never.html"],
+            "address": ["dweb://never.html", "https://example.com/never.html"],
             "mime_type": "text/html"
         }, {
-            "file": ["dweb://never.jpg"],
+            "address": ["dweb://never.jpg"],
             "mime_type": "image/jpeg"
         }],
 
