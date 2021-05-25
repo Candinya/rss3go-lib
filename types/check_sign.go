@@ -75,6 +75,10 @@ func (o *RSS3) CheckSign() (bool, error) {
 
 	signHex := o.Signature
 
+	if signHex == "" {
+		return false, nil
+	}
+
 	jsonBytes, err := json.Marshal(o)
 	if err != nil {
 		return false, err
@@ -103,6 +107,10 @@ func (o *RSS3) CheckSign() (bool, error) {
 func (o *RSS3Profile4F) CheckSign(Id RSS3ID) (bool, error) {
 
 	signHex := o.Signature
+
+	if signHex == "" {
+		return true, nil
+	}
 
 	jsonBytes, err := json.Marshal(o)
 	if err != nil {
@@ -133,6 +141,10 @@ func (o *RSS3Links4F) CheckSign(Id RSS3ID) (bool, error) {
 
 	signHex := o.Signature
 
+	if signHex == "" {
+		return false, nil
+	}
+
 	jsonBytes, err := json.Marshal(o)
 	if err != nil {
 		return false, err
@@ -161,6 +173,10 @@ func (o *RSS3Links4F) CheckSign(Id RSS3ID) (bool, error) {
 func (o *RSS3Item4F) CheckSign() (bool, error) {
 
 	signHex := o.Signature
+
+	if signHex == "" {
+		return false, nil
+	}
 
 	jsonBytes, err := json.Marshal(o)
 	if err != nil {
@@ -191,6 +207,10 @@ func (o *RSS3Items4F) CheckSign() (bool, error) {
 
 	signHex := o.Signature
 
+	if signHex == "" {
+		return false, nil
+	}
+
 	jsonBytes, err := json.Marshal(o)
 	if err != nil {
 		return false, err
@@ -219,6 +239,10 @@ func (o *RSS3Items4F) CheckSign() (bool, error) {
 func (o *RSS3List4F) CheckSign() (bool, error) {
 
 	signHex := o.Signature
+
+	if signHex == "" {
+		return false, nil
+	}
 
 	jsonBytes, err := json.Marshal(o)
 	if err != nil {
