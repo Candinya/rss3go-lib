@@ -1,16 +1,13 @@
-package methods
+package types
 
 import (
+	"crypto/ecdsa"
 	"encoding/json"
-	"github.com/google/go-cmp/cmp"
+	"github.com/ethereum/go-ethereum/crypto"
 	"testing"
 )
 
-func TestJson2RSS3(t *testing.T) {
-
-	// RSS3Persona file: `persona:diygod` - `interface RSS3Persona`
-	// A persona DIYgod with a published item Never
-
+func TestRSS3_SetSign(t *testing.T) {
 	demo := []byte(`
 {
     "id": "0xC8b960D09C0078c18Dcbe7eB9AB9d816BcCa8944",
@@ -80,24 +77,39 @@ func TestJson2RSS3(t *testing.T) {
 
 `)
 
-	var orig, coded interface{}
+	var ret RSS3
 
-	ret := Json2RSS3(demo)
-	retJsonByte := ret.ToJson()
-
-	//t.Log(string(retJsonByte))
-
-	if err := json.Unmarshal(demo, &orig); err != nil {
-		t.Error(err)
-	}
-	if err := json.Unmarshal(retJsonByte, &coded); err != nil {
+	if err := json.Unmarshal(demo, &ret); err != nil {
 		t.Error(err)
 	}
 
-	if !cmp.Equal(orig, coded) {
-		t.Log(cmp.Diff(orig, coded))
-		t.Fail()
+	key, err := crypto.GenerateKey()
+	if err != nil {
+		t.Error(err)
+	}
+
+	t.Logf("Using private key: %x", crypto.FromECDSA(key))
+
+	t.Logf("Using public key: %x", crypto.FromECDSAPub(key.Public().(*ecdsa.PublicKey)))
+
+	t.Log("Using Address: ", crypto.PubkeyToAddress(key.PublicKey).String())
+
+	ret.SetSign(key)
+
+	jsonBytes, err := json.MarshalIndent(ret, "", "\t")
+	if err != nil {
+		t.Error(err)
+	}
+
+	t.Log(string(jsonBytes))
+
+	if success, err := ret.CheckSign(); err != nil {
+		t.Error(err)
+	} else {
+		t.Log("No errors")
+		if !success {
+			t.Fail()
+		}
 	}
 
 }
-
