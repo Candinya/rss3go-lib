@@ -33,18 +33,18 @@ type RSS34F struct {
 }
 
 type RSS3Profile4F struct {
-	Name   string            `json:"name,omitempty"`
-	Avatar ThirdPartyAddress `json:"avatar,omitempty"`
-	Bio    string            `json:"bio,omitempty"`
-	Tags   []string          `json:"tags,omitempty"`
+	Name      string            `json:"name,omitempty"`
+	Avatar    ThirdPartyAddress `json:"avatar,omitempty"`
+	Bio       string            `json:"bio,omitempty"`
+	Tags      []string          `json:"tags,omitempty"`
 	Signature string            `json:"signature,omitempty"`
 }
 
 type RSS3Links4F struct {
-	Type     string     `json:"type"`
-	Tags     []string   `json:"tags,omitempty"`
-	List     []RSS3ID   `json:"list"`
-	ListNext RSS3ListID `json:"list_next,omitempty"`
+	Type      string     `json:"type"`
+	Tags      []string   `json:"tags,omitempty"`
+	List      []RSS3ID   `json:"list"`
+	ListNext  RSS3ListID `json:"list_next,omitempty"`
 	Signature string     `json:"signature,omitempty"`
 }
 
