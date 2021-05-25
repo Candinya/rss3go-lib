@@ -7,7 +7,23 @@ import (
 	"strings"
 )
 
+func fixSign(oldSign string) string {
+	var fixed string
+	fixed = oldSign
+	if fixed[:2] == "0x" {
+		fixed = fixed[2:]
+	}
+	if fixed[129:] == "1b" {
+		fixed = fixed [:129] + "00"
+	} else if fixed[129:] == "1c" {
+		fixed = fixed [:129] + "01"
+	}
+	return fixed
+}
+
 func getSigner(msgHashBytes []byte, signHex string) (string, error) {
+
+	signHex = fixSign(signHex)
 
 	signatureReceived, err := hex.DecodeString(signHex)
 	if err != nil {
