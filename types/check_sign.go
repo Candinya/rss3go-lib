@@ -13,10 +13,10 @@ func fixSign(oldSign string) string {
 	if fixed[:2] == "0x" {
 		fixed = fixed[2:]
 	}
-	if fixed[129:] == "1b" {
-		fixed = fixed [:129] + "00"
-	} else if fixed[129:] == "1c" {
-		fixed = fixed [:129] + "01"
+	if fixed[128:] == "1b" {
+		fixed = fixed[:128] + "00"
+	} else if fixed[128:] == "1c" {
+		fixed = fixed[:128] + "01"
 	}
 	return fixed
 }
