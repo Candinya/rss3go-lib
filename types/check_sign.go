@@ -3,7 +3,6 @@ package types
 import (
 	"encoding/hex"
 	"encoding/json"
-	"fmt"
 	"github.com/ethereum/go-ethereum/crypto"
 	"strings"
 )
@@ -102,8 +101,6 @@ func (o *RSS3) CheckSign() (bool, error) {
 	if err != nil {
 		return false, err
 	}
-
-	fmt.Println(string(jsonBytes4S))
 
 	msgHashBytes := crypto.Keccak256Hash(jsonBytes4S).Bytes()
 
