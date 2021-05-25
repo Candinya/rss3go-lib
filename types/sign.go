@@ -34,9 +34,11 @@ func (o *RSS3) SetSign(key *ecdsa.PrivateKey) {
 	for index, _ := range o.Items {
 		i := &o.Items[index]
 		i.Id = fmt.Sprintf("%s-item-%d", ethAddr, index)
-		if index != 0 {
-			i.Upstream = fmt.Sprintf("%s-item-%d", ethAddr, index-1)
-		}
+		//if index != 0 {
+		//	i.Upstream = fmt.Sprintf("%s-item-%d", ethAddr, index-1)
+		//} else {
+		//	i.Upstream = ""
+		//}
 		i.SetSign(key)
 	}
 
