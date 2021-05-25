@@ -47,27 +47,33 @@ func getSigner(msgHashBytes []byte, signHex string) (string, error) {
 
 func (o *RSS3) CheckSign() (bool, error) {
 
-	if success, err := o.Profile.CheckSign(o.Id); err != nil {
-		return false, err
-	} else if !success {
-		return false, nil
-	}
-
-	for index, _ := range o.Links {
-		l := &o.Links[index]
-		if success, err := l.CheckSign(o.Id); err != nil {
+	if o.Profile != nil {
+		if success, err := o.Profile.CheckSign(o.Id); err != nil {
 			return false, err
 		} else if !success {
 			return false, nil
 		}
 	}
 
-	for index, _ := range o.Items {
-		i := &o.Items[index]
-		if success, err := i.CheckSign(); err != nil {
-			return false, err
-		} else if !success {
-			return false, nil
+	if o.Links != nil {
+		for index, _ := range o.Links {
+			l := &o.Links[index]
+			if success, err := l.CheckSign(o.Id); err != nil {
+				return false, err
+			} else if !success {
+				return false, nil
+			}
+		}
+	}
+
+	if o.Items != nil {
+		for index, _ := range o.Items {
+			i := &o.Items[index]
+			if success, err := i.CheckSign(); err != nil {
+				return false, err
+			} else if !success {
+				return false, nil
+			}
 		}
 	}
 
