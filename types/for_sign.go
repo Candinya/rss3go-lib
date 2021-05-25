@@ -20,16 +20,16 @@ type RSS34S struct {
 
 	*RSS3Base4S
 
-	Profile *RSS3Profile4S `json:"profile"`
+	Profile *RSS3Profile4F `json:"profile,omitempty"`
 
-	Items     []RSS3Item4S `json:"items"`
+	Items     []RSS3Item4F `json:"items,omitempty"`
 	ItemsNext RSS3ItemsID  `json:"items_next,omitempty"`
 
-	Links []RSS3Links4S `json:"links,omitempty"`
+	Links []RSS3Links4F `json:"links,omitempty"`
 
 	//Backlinks []RSS3Backlinks4S `json:"@backlinks,omitempty"`
 
-	Assets []RSS3Assets4S `json:"assets,omitempty"`
+	Assets []RSS3Assets4F `json:"assets,omitempty"`
 }
 
 type RSS3Profile4S struct {
@@ -66,7 +66,7 @@ type RSS3Items4S struct {
 
 	*RSS3Base4S
 
-	Items     []RSS3Item4S `json:"items"`
+	Items     []RSS3Item4F `json:"items"`
 	ItemsNext RSS3ItemsID  `json:"items_next,omitempty"`
 }
 
@@ -83,9 +83,9 @@ type RSS3List4S struct {
 
 // RSS3Item4S file
 type RSS3Item4S struct {
-	Id            string   `json:"id"`
 	Authors       []RSS3ID `json:"authors,omitempty"`
 	Title         string   `json:"title,omitempty"`
+	Id            string   `json:"id"`
 	Summary       string   `json:"summary,omitempty"`
 	Tags          []string `json:"tags,omitempty"`
 	DatePublished string   `json:"date_published,omitempty"`
@@ -94,7 +94,7 @@ type RSS3Item4S struct {
 	Type     string     `json:"type,omitempty"`
 	Upstream RSS3ItemID `json:"upstream,omitempty"`
 
-	Contents []RSS3ItemContent4S `json:"contents,omitempty"`
+	Contents []RSS3ItemContent4F `json:"contents,omitempty"`
 
 	//Contexts []RSS3ItemContext4S `json:"@contexts,omitempty"`
 

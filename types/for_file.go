@@ -83,9 +83,9 @@ type RSS3List4F struct {
 
 // RSS3Item4F file
 type RSS3Item4F struct {
-	Id            string   `json:"id"`
 	Authors       []RSS3ID `json:"authors,omitempty"`
 	Title         string   `json:"title,omitempty"`
+	Id            string   `json:"id"`
 	Summary       string   `json:"summary,omitempty"`
 	Tags          []string `json:"tags,omitempty"`
 	DatePublished string   `json:"date_published,omitempty"`
