@@ -4,13 +4,10 @@ import (
 	"encoding/hex"
 	"encoding/json"
 	"github.com/ethereum/go-ethereum/crypto"
-	"log"
 	"strings"
 )
 
-func getSigner (msgHashBytes []byte, signHex string) (string, error) {
-
-	log.Printf("Hash: %x\n", msgHashBytes)
+func getSigner(msgHashBytes []byte, signHex string) (string, error) {
 
 	signatureReceived, err := hex.DecodeString(signHex)
 	if err != nil {
@@ -32,7 +29,7 @@ func getSigner (msgHashBytes []byte, signHex string) (string, error) {
 	return signer, nil
 }
 
-func (o * RSS3) CheckSign() (bool, error) {
+func (o *RSS3) CheckSign() (bool, error) {
 
 	if success, err := o.Profile.CheckSign(o.Id); err != nil {
 		return false, err

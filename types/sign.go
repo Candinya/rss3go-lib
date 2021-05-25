@@ -8,15 +8,17 @@ import (
 	"github.com/ethereum/go-ethereum/crypto"
 )
 
-func signMsg(key * ecdsa.PrivateKey, msgHash []byte) []byte {
+func signMsg(key *ecdsa.PrivateKey, msgHash []byte) []byte {
+
 	signature, err := crypto.Sign(msgHash, key)
 	if err != nil {
 		return nil
 	}
 	return signature
+
 }
 
-func (o * RSS3) SetSign(key * ecdsa.PrivateKey) {
+func (o *RSS3) SetSign(key *ecdsa.PrivateKey) {
 
 	o.Profile.SetSign(key)
 
@@ -33,7 +35,7 @@ func (o * RSS3) SetSign(key * ecdsa.PrivateKey) {
 		i := &o.Items[index]
 		i.Id = fmt.Sprintf("%s-item-%d", ethAddr, index)
 		if index != 0 {
-			i.Upstream = fmt.Sprintf("%s-item-%d", ethAddr, index - 1)
+			i.Upstream = fmt.Sprintf("%s-item-%d", ethAddr, index-1)
 		}
 		i.SetSign(key)
 	}
@@ -67,7 +69,7 @@ func (o * RSS3) SetSign(key * ecdsa.PrivateKey) {
 
 }
 
-func (o *RSS3Profile4F) SetSign(key * ecdsa.PrivateKey) {
+func (o *RSS3Profile4F) SetSign(key *ecdsa.PrivateKey) {
 
 	jsonBytes, err := json.Marshal(o)
 	if err != nil {
@@ -96,7 +98,7 @@ func (o *RSS3Profile4F) SetSign(key * ecdsa.PrivateKey) {
 
 }
 
-func (o *RSS3Links4F) SetSign(key * ecdsa.PrivateKey) {
+func (o *RSS3Links4F) SetSign(key *ecdsa.PrivateKey) {
 
 	jsonBytes, err := json.Marshal(o)
 	if err != nil {
@@ -125,7 +127,7 @@ func (o *RSS3Links4F) SetSign(key * ecdsa.PrivateKey) {
 
 }
 
-func (o *RSS3Item4F) SetSign(key * ecdsa.PrivateKey) {
+func (o *RSS3Item4F) SetSign(key *ecdsa.PrivateKey) {
 
 	jsonBytes, err := json.Marshal(o)
 	if err != nil {
@@ -154,7 +156,7 @@ func (o *RSS3Item4F) SetSign(key * ecdsa.PrivateKey) {
 
 }
 
-func (o *RSS3Items4F) SetSign(key * ecdsa.PrivateKey) {
+func (o *RSS3Items4F) SetSign(key *ecdsa.PrivateKey) {
 
 	jsonBytes, err := json.Marshal(o)
 	if err != nil {
@@ -183,7 +185,7 @@ func (o *RSS3Items4F) SetSign(key * ecdsa.PrivateKey) {
 
 }
 
-func (o *RSS3List4F) SetSign(key * ecdsa.PrivateKey) {
+func (o *RSS3List4F) SetSign(key *ecdsa.PrivateKey) {
 
 	jsonBytes, err := json.Marshal(o)
 	if err != nil {
