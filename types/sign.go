@@ -6,17 +6,8 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/ethereum/go-ethereum/crypto"
+	"github.com/nyawork/rss3go_lib/utils"
 )
-
-func signMsg(key *ecdsa.PrivateKey, msgHash []byte) []byte {
-
-	signature, err := crypto.Sign(msgHash, key)
-	if err != nil {
-		return nil
-	}
-	return signature
-
-}
 
 func (o *RSS3) SetSign(key *ecdsa.PrivateKey) {
 
@@ -61,9 +52,7 @@ func (o *RSS3) SetSign(key *ecdsa.PrivateKey) {
 		return
 	}
 
-	msgHashBytes := crypto.Keccak256Hash(jsonBytes4S).Bytes()
-
-	sign := signMsg(key, msgHashBytes)
+	sign := utils.SignMsg(key, jsonBytes4S)
 
 	signHex := hex.EncodeToString(sign)
 
@@ -90,9 +79,7 @@ func (o *RSS3Profile4F) SetSign(key *ecdsa.PrivateKey) {
 		return
 	}
 
-	msgHashBytes := crypto.Keccak256Hash(jsonBytes4S).Bytes()
-
-	sign := signMsg(key, msgHashBytes)
+	sign := utils.SignMsg(key, jsonBytes4S)
 
 	signHex := hex.EncodeToString(sign)
 
@@ -119,9 +106,7 @@ func (o *RSS3Links4F) SetSign(key *ecdsa.PrivateKey) {
 		return
 	}
 
-	msgHashBytes := crypto.Keccak256Hash(jsonBytes4S).Bytes()
-
-	sign := signMsg(key, msgHashBytes)
+	sign := utils.SignMsg(key, jsonBytes4S)
 
 	signHex := hex.EncodeToString(sign)
 
@@ -148,9 +133,7 @@ func (o *RSS3Item4F) SetSign(key *ecdsa.PrivateKey) {
 		return
 	}
 
-	msgHashBytes := crypto.Keccak256Hash(jsonBytes4S).Bytes()
-
-	sign := signMsg(key, msgHashBytes)
+	sign := utils.SignMsg(key, jsonBytes4S)
 
 	signHex := hex.EncodeToString(sign)
 
@@ -177,9 +160,7 @@ func (o *RSS3Items4F) SetSign(key *ecdsa.PrivateKey) {
 		return
 	}
 
-	msgHashBytes := crypto.Keccak256Hash(jsonBytes4S).Bytes()
-
-	sign := signMsg(key, msgHashBytes)
+	sign := utils.SignMsg(key, jsonBytes4S)
 
 	signHex := hex.EncodeToString(sign)
 
@@ -206,9 +187,7 @@ func (o *RSS3List4F) SetSign(key *ecdsa.PrivateKey) {
 		return
 	}
 
-	msgHashBytes := crypto.Keccak256Hash(jsonBytes4S).Bytes()
-
-	sign := signMsg(key, msgHashBytes)
+	sign := utils.SignMsg(key, jsonBytes4S)
 
 	signHex := hex.EncodeToString(sign)
 

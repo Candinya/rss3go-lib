@@ -6,21 +6,32 @@
 
 ## Usage
 
-This package includes main types of RSS3, including `RSS3Base`, `RSS3`, `RSS3List` and `RSS3Item` wrapped in `types` package.
+### Types
+
+This package includes main types of RSS3, including:
+
+- RSS3Base
+- RSS3
+- RSS3List
+- RSS3Item
 
 Also, with useful methods like `*.SetSign`, and `*.CheckSign`.
 
-Using like this:
+Using like this can create signature for your RSS3 Persona `demo`.
 
 ``` go
 
-var demo types.RSS3 // Some RSS3 Persona
+var key *ecdsa.PrivateKey
 
-demo.SetSign(key) // key: your ECDSA private key (*ecdsa.PrivateKey)
+...
+
+var demo types.RSS3
+
+demo.SetSign(key)
 
 ```
 
-Can create signature for your RSS3 Persona `demo`.
+And this can check if the signer and embedded signature matches.
 
 ``` go
 
@@ -28,9 +39,42 @@ demo.CheckSign()
 
 ```
 
-Can check if the signer and embedded signature matches.
-
 For other demos, you can check those `*_test.go` files for more help.
+
+### Utils
+
+Contains some useful tools:
+
+- FixSign
+- SignMsg
+
+#### FixSign
+
+This function can delete the starting "0x" of signature (if it has), and fix the ending (eth-crypto library would somewhat add 0x1b to the last byte, causing it change from 00/01 to 1b/1c, which will crash the requested functions)
+
+``` go
+
+utils.FixSign(signatureReceived)
+
+```
+
+#### SignMsg
+
+This function can be used to create signatures for `[]byte` . Here's a demo with a string.
+
+``` go
+
+var key *ecdsa.PrivateKey
+
+...
+
+msgBytes := []byte("DemoMsg")
+
+sign := utils.SignMsg(key, msgBytes)
+
+signHex := hex.EncodeToString(sign)
+
+```
 
 ## Inner Types 
 
