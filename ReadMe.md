@@ -29,3 +29,17 @@ demo.CheckSign()
 ```
 
 Can check if the signer and embedded signature matches.
+
+For other demos, you can check those `*_test.go` files for more help.
+
+## Inner Types 
+
+> (Recommend not to use outside this package)
+
+- types/for_sign.go: types derived of useless fields for creating signature.
+  
+  Those types often ends with `4S` which means "For(**4**) **S**ign"
+  
+- types/for_file.go: full types with all fields (as described in definition) for storage use.
+
+  Those types often ends with `4F` which means "For(**4**) **F**ile"
