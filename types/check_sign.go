@@ -4,26 +4,13 @@ import (
 	"encoding/hex"
 	"encoding/json"
 	"github.com/ethereum/go-ethereum/crypto"
+	"github.com/nyawork/rss3go_lib/utils"
 	"strings"
 )
 
-func fixSign(oldSign string) string {
-	var fixed string
-	fixed = oldSign
-	if fixed[:2] == "0x" {
-		fixed = fixed[2:]
-	}
-	if fixed[128:] == "1b" {
-		fixed = fixed[:128] + "00"
-	} else if fixed[128:] == "1c" {
-		fixed = fixed[:128] + "01"
-	}
-	return fixed
-}
-
 func getSigner(msgHashBytes []byte, signHex string) (string, error) {
 
-	signHex = fixSign(signHex)
+	signHex = utils.FixSign(signHex)
 
 	signatureReceived, err := hex.DecodeString(signHex)
 	if err != nil {
