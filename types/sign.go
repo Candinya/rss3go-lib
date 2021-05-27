@@ -6,7 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/nyawork/rss3go_lib/utils"
+	"github.com/nyawork/rss3go-lib/utils"
 )
 
 func (o *RSS3) SetSign(key *ecdsa.PrivateKey) {
