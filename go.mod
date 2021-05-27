@@ -1,4 +1,4 @@
-module github.com/nyawork/rss3go_lib
+module github.com/nyawork/rss3go-lib
 
 go 1.16
 
