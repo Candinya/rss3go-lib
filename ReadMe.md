@@ -1,3 +1,7 @@
+# Not maintained anymore. Check [@NaturalSelectionLabs](https://github.com/NaturalSelectionLabs) for further updates.
+
+---
+
 # RSS3 Go Lib
 
 > A go lib for [RSS3](https://rss3.io)
